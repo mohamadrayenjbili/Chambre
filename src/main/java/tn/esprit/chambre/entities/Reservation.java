@@ -3,6 +3,7 @@ package tn.esprit.chambre.entities;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -19,6 +20,8 @@ public class Reservation {
     public Date anneeUniversitaire;
 
     public boolean estValide;
+    @ManyToMany
+    private List <Etudiant> etudiant;
 
 
 }

@@ -3,6 +3,8 @@ package tn.esprit.chambre.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -21,4 +23,9 @@ public class Chambre {
     @Enumerated(EnumType.STRING) // Sauvegarder l'énum comme texte (SIMPLE, DOUBLE, TRIPLE)
     @Column(nullable = false)
     public TypeChambre typeC;
+    @ManyToOne
+    private Bloc bloc;
+    @OneToMany
+    private List<Reservation> reservation;
+
 }

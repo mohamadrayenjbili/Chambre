@@ -20,4 +20,9 @@ public class Foyer {
     public String nomFoyer;
 
     public Long capaciteFoyer;
+
+    @OneToOne (mappedBy = "foyer")
+    private Universite universite;
+    @OneToMany(mappedBy = "bloc")
+    private List<Bloc> blocs;
 }

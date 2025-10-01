@@ -30,4 +30,6 @@ public class Etudiant {
 
     @Temporal(TemporalType.DATE)
     public Date dateNaissance;
+    @ManyToMany
+    private List <Reservation> reservation;
 }

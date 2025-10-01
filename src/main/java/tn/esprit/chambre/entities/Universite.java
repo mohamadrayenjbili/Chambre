@@ -20,4 +20,7 @@ public class Universite {
 
     @Column(nullable = false)
     public String adresse;
+
+    @OneToOne
+    private Foyer foyer;
 }
