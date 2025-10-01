@@ -30,6 +30,6 @@ public class Etudiant {
 
     @Temporal(TemporalType.DATE)
     public Date dateNaissance;
-    @ManyToMany
+    @ManyToMany(mappedBy = "etudiant")
     private List <Reservation> reservation;
 }
