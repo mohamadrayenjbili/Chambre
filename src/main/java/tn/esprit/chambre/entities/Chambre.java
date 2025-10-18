@@ -17,11 +17,11 @@ public class Chambre {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long idChambre;
 
-    @Column(nullable = false, unique = true)
+   // @Column(nullable = false, unique = true)
     public Long numeroChambre;
 
     @Enumerated(EnumType.STRING) // Sauvegarder l'énum comme texte (SIMPLE, DOUBLE, TRIPLE)
-    @Column(nullable = false)
+   // @Column(nullable = false)
     public TypeChambre typeC;
     @ManyToOne
     private Bloc bloc;
