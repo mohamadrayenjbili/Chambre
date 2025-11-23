@@ -2,6 +2,7 @@ package tn.esprit.chambre.controller;
 
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.chambre.entities.Foyer;
+import tn.esprit.chambre.entities.Universite;
 import tn.esprit.chambre.service.FoyerServiceImpl;
 
 import java.util.List;
@@ -95,6 +96,10 @@ public class FoyerController {
     @GetMapping("/count/capacite/greater/{val}")
     public Long countFoyersByCapaciteGreaterThan(@PathVariable Long val) {
         return foyerServiceImpl.countFoyersByCapaciteGreaterThan(val);
+    }
+    @PostMapping("/{idFoyer}/affecter-universite/{idUniversite}")
+    public Universite affecterUniversiteToFoyer(@PathVariable Long idFoyer, @PathVariable long idUniversite) {
+        return foyerServiceImpl.getUniversiteByFoyerId(idFoyer, idUniversite);
     }
 
 

@@ -2,6 +2,7 @@ package tn.esprit.chambre.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -30,6 +31,63 @@ public class Etudiant {
 
     @Temporal(TemporalType.DATE)
     public Date dateNaissance;
-    @ManyToMany(mappedBy = "etudiant")
-    private List <Reservation> reservation;
+
+    @ManyToMany(mappedBy = "etudiantList")
+    private List<Reservation> reservationList = new ArrayList<>();
+
+    public String getNomEt() {
+        return nomEt;
+    }
+
+    public Long getIdEtudiant() {
+        return idEtudiant;
+    }
+
+    public String getPrenomEt() {
+        return prenomEt;
+    }
+
+    public Long getCin() {
+        return cin;
+    }
+
+    public String getEcole() {
+        return ecole;
+    }
+
+    public Date getDateNaissance() {
+        return dateNaissance;
+    }
+
+    public List<Reservation> getReservationList() {
+        return reservationList;
+    }
+
+    public void setReservationList(List<Reservation> reservationList) {
+        this.reservationList = reservationList;
+    }
+
+    public void setDateNaissance(Date dateNaissance) {
+        this.dateNaissance = dateNaissance;
+    }
+
+    public void setEcole(String ecole) {
+        this.ecole = ecole;
+    }
+
+    public void setCin(Long cin) {
+        this.cin = cin;
+    }
+
+    public void setPrenomEt(String prenomEt) {
+        this.prenomEt = prenomEt;
+    }
+
+    public void setNomEt(String nomEt) {
+        this.nomEt = nomEt;
+    }
+
+    public void setIdEtudiant(Long idEtudiant) {
+        this.idEtudiant = idEtudiant;
+    }
 }

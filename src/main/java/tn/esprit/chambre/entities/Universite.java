@@ -23,4 +23,12 @@ public class Universite {
 
     @OneToOne
     private Foyer foyer;
+
+    public void setIdUniversite(Long idUniversite) {
+        this.idUniversite = idUniversite;
+    }
+
+    public void setFoyer(Foyer foyer) {
+        this.foyer = foyer;
+    }
 }

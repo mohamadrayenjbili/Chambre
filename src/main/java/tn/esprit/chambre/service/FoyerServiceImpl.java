@@ -2,7 +2,9 @@ package tn.esprit.chambre.service;
 
 import org.springframework.stereotype.Service;
 import tn.esprit.chambre.entities.Foyer;
+import tn.esprit.chambre.entities.Universite;
 import tn.esprit.chambre.repository.FoyerRepository;
+import tn.esprit.chambre.repository.UniversiteRepository;
 
 import java.util.List;
 
@@ -10,9 +12,11 @@ import java.util.List;
 public class FoyerServiceImpl implements IFoyerService {
 
     private final FoyerRepository foyerRepository;
+    private final UniversiteRepository universiteRepository;
 
-    public FoyerServiceImpl(FoyerRepository foyerRepository) {
+    public FoyerServiceImpl(FoyerRepository foyerRepository, UniversiteRepository universiteRepository) {
         this.foyerRepository = foyerRepository;
+        this.universiteRepository = universiteRepository;
     }
 
     // ----------------- CRUD -----------------
@@ -39,6 +43,12 @@ public class FoyerServiceImpl implements IFoyerService {
     @Override
     public List<Foyer> getAllFoyer() {
         return foyerRepository.findAll();
+    }
+    public Universite getUniversiteByFoyerId(Long idFoyer, long idUniversite) {
+        Foyer foyer = foyerRepository.findById(idFoyer).orElse(null);
+        Universite universite = universiteRepository.findById(idUniversite).orElse(null);
+        universite.setFoyer(foyer);
+        return universiteRepository.save(universite);
     }
 
 

@@ -25,4 +25,20 @@ public class Foyer {
     private Universite universite;
     @OneToMany(mappedBy = "foyer")
     private List<Bloc> blocs;
+
+    public void setIdFoyer(Long idFoyer) {
+        this.idFoyer = idFoyer;
+    }
+
+    public void setUniversite(Universite universite) {
+        this.universite = universite;
+    }
+
+    public void setNomFoyer(String nomFoyer) {
+        this.nomFoyer = nomFoyer;
+    }
+
+    public void setCapaciteFoyer(Long capaciteFoyer) {
+        this.capaciteFoyer = capaciteFoyer;
+    }
 }

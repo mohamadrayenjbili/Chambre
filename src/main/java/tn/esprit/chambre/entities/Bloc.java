@@ -25,5 +25,19 @@ public class Bloc {
     @OneToMany(mappedBy = "bloc")
     private List<Chambre> chambre;
 
+    public void setIdBloc(Long idBloc) {
+        this.idBloc = idBloc;
+    }
 
+    public void setFoyer(Foyer foyer) {
+        this.foyer = foyer;
+    }
+
+    public void setNomBloc(String nomBloc) {
+        this.nomBloc = nomBloc;
+    }
+
+    public void setCapaciteBloc(Long capaciteBloc) {
+        this.capaciteBloc = capaciteBloc;
+    }
 }

@@ -4,7 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.chambre.entities.Chambre;
 import tn.esprit.chambre.service.ChambreServiceImpl;
-
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.Parameter;
 import java.util.List;
 
 @RestController
@@ -35,5 +38,13 @@ public class ChambreController {
     @GetMapping
     public List<Chambre> getAllChambres() {
         return chambreServiceImpl.getAllChambres();
+    }
+    @PostMapping ("/{num}/affecter/{idBloc}")
+    public Chambre affecterChambreABloc(@PathVariable Long num, @PathVariable Long idBloc){
+        return chambreServiceImpl.affecterChambreABloc(num,idBloc);
+    }
+    @PostMapping ("/{num}/desaffecter")
+    public Chambre desaffecterChambreABloc(@PathVariable Long num){
+        return chambreServiceImpl.desaffecterChambreABloc(num);
     }
 }
