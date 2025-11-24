@@ -5,8 +5,6 @@ import lombok.*;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
@@ -14,23 +12,43 @@ public class Bloc {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long idBloc;
+    private Long idBloc;
 
     @Column(nullable = false)
-    public String nomBloc;
+    private String nomBloc;
 
-    public Long capaciteBloc;
+    private Long capaciteBloc;
+
     @ManyToOne
     private Foyer foyer;
+
     @OneToMany(mappedBy = "bloc")
     private List<Chambre> chambre;
 
-    public void setIdBloc(Long idBloc) {
-        this.idBloc = idBloc;
+    // GETTERS
+    public Long getIdBloc() {
+        return idBloc;
     }
 
-    public void setFoyer(Foyer foyer) {
-        this.foyer = foyer;
+    public String getNomBloc() {
+        return nomBloc;
+    }
+
+    public Long getCapaciteBloc() {
+        return capaciteBloc;
+    }
+
+    public Foyer getFoyer() {
+        return foyer;
+    }
+
+    public List<Chambre> getChambre() {
+        return chambre;
+    }
+
+    // SETTERS
+    public void setIdBloc(Long idBloc) {
+        this.idBloc = idBloc;
     }
 
     public void setNomBloc(String nomBloc) {
@@ -39,5 +57,13 @@ public class Bloc {
 
     public void setCapaciteBloc(Long capaciteBloc) {
         this.capaciteBloc = capaciteBloc;
+    }
+
+    public void setFoyer(Foyer foyer) {
+        this.foyer = foyer;
+    }
+
+    public void setChambre(List<Chambre> chambre) {
+        this.chambre = chambre;
     }
 }

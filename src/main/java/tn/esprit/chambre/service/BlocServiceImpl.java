@@ -35,12 +35,12 @@ public class BlocServiceImpl implements IBlocService {
 
     @Override
     public Bloc getBlocById(Long id) {
-        return null;
+        return blocRepository.findById(id).orElse(null);
     }
 
     @Override
     public Bloc updateBloc(Bloc bloc) {
-        return null;
+        return blocRepository.save(bloc);
     }
 
     @Override
@@ -49,31 +49,35 @@ public class BlocServiceImpl implements IBlocService {
     }
 
     public Bloc BlocAFoyer(Long idFoyer, Long idBloc){
-      Foyer foyer = foyerRepository.findById(idFoyer).orElse(null);
+        Foyer foyer = foyerRepository.findById(idFoyer).orElse(null);
         Bloc bloc = blocRepository.findById(idBloc).orElse(null);
 
         //Bloc bloc=blocRepository.findBlocByNumeroBloc(num);
-        bloc.setFoyer(foyer);
-        blocRepository.save(bloc);
-        return blocRepository.save(bloc);
-
+        if (bloc != null && foyer != null) {
+            bloc.setFoyer(foyer);
+            return blocRepository.save(bloc);
+        }
+        return null;
     }
 
 
-    public Chambre
-
-    affecterChambreABloc(Long num , Long idBloc) {
-        Chambre chambre = chambreRepository. findChambreByNumeroChambre(num);
-        Bloc bloc = blocRepository. findById(idBloc) .get();
-        chambre.setBloc(bloc);
-        chambreRepository. save (chambre);
-        return chambre;
+    public Chambre affecterChambreABloc(Long num , Long idBloc) {
+        Chambre chambre = chambreRepository.findChambreByNumeroChambre(num);
+        Bloc bloc = blocRepository.findById(idBloc).orElse(null);
+        if (chambre != null && bloc != null) {
+            chambre.setBloc(bloc);
+            return chambreRepository.save(chambre);
+        }
+        return null;
     }
 
     public Chambre desaffecterChambreDuBloc(Long num) {
         Chambre chambre = chambreRepository.findChambreByNumeroChambre(num);
-        chambre.setBloc(null);
-        return chambreRepository.save(chambre);
+        if (chambre != null) {
+            chambre.setBloc(null);
+            return chambreRepository.save(chambre);
+        }
+        return null;
     }
 }
 
@@ -84,4 +88,3 @@ public class BlocServiceImpl implements IBlocService {
 //        universite.setFoyer(foyer);
 //        return universiteRepository.save(universite);
 //    }
-
